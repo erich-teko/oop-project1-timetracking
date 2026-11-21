@@ -9,7 +9,7 @@ Die Dateien sind nach den Lieferobjekten (L1–L8) des Projektblatts benannt.
 |---|---|---|---|---|---|
 | L1 | Projektskizze | [Projektantrag (PDF)](L1-OOP%20Projekt%201%20(JS)%20-%20Projektantrag.pdf) | 10.11.2026 | Freigabe (unbewertet) | freigegeben |
 | L2 | Anforderungsdokument | [L2-anforderungsdokument.md](L2-anforderungsdokument.md) | Entwurf 24.11.2026, final 03.01.2027 | D1, D2 | Entwurf 0.1 |
-| L3 | Architektur- und Designdokument | folgt | Entwurf 24.11.2026, final 03.01.2027 | D3, D4 | offen |
+| L3 | Architektur- und Designdokument | Entitätendiagramm: [L3-uml-entitaeten.drawio](L3-uml-entitaeten.drawio), Bild: [L3-uml-entitaeten.png](L3-uml-entitaeten.png). Dokument folgt. | Entwurf 24.11.2026, final 03.01.2027 | D3, D4 | Entitätendiagramm als Entwurf |
 | L4 | Designentscheide (ADR) | folgt | 03.01.2027 | Z3 | offen |
 | L5 | Lauffähige Applikation | Quellcode und README im Repository | 03.01.2027 | U1–U5 | offen |
 | L6 | Tests, Abnahme und Peer-Review | folgt | Zwischenstand 15.12.2026, final 03.01.2027 | Ü1–Ü4 | offen |
