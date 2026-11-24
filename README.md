@@ -55,6 +55,23 @@ Alle Befehle laufen im Hauptverzeichnis.
 
 Die Regeln zur Architektur stehen in [`AGENTS.md`](AGENTS.md), Kapitel 3.
 
+## Fehler der API
+
+Fehler kommen immer im selben JSON-Format zurück:
+
+```json
+{ "error": { "message": "Der Name fehlt.", "field": "name" } }
+```
+
+`field` fehlt, wenn der Fehler kein Eingabefeld betrifft.
+
+| Fehler | HTTP-Status |
+|---|---|
+| `ValidationError`: ungültige Eingabe oder ungültiges JSON | 400 |
+| Unbekannte Adresse | 404 |
+| `BusinessRuleError`: Verletzung einer Fachregel | 409 |
+| Unerwarteter Fehler, ohne technische Details (NFR-03) | 500 |
+
 ## Dokumentation
 
 Die Projektdokumentation liegt im Ordner [`docs`](docs/README.md).
