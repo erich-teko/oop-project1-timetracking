@@ -1,0 +1,33 @@
+meta {
+  name: Ungültiges JSON
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/health
+  body: text
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:text {
+  { "name": 
+}
+
+assert {
+  res.status: eq 400
+}
+
+tests {
+  test("meldet ungültiges JSON auf Deutsch", function () {
+    expect(res.getBody().error.message).to.equal("Der Inhalt der Anfrage ist kein gültiges JSON.");
+  });
+}
+
+docs {
+  Ein Inhalt, der kein gültiges JSON ist, ergibt HTTP 400 (NFR-02).
+}

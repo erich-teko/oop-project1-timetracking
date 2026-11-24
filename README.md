@@ -49,6 +49,19 @@ Bei jedem Pull Request auf `main` laufen Lint und Tests mit Abdeckung in GitHub 
 Der Workflow steht in [`.github/workflows/ci.yml`](.github/workflows/ci.yml).  
 Ein roter Lauf zeigt den Pull Request als fehlgeschlagen an.
 
+## API von Hand prüfen mit Bruno
+
+Der Ordner [`bruno`](bruno/README.md) enthält eine [Bruno](https://www.usebruno.com/)-Sammlung mit allen Endpunkten.  
+Jeder Eintrag prüft Status und Antwort. So lässt sich das ganze Backend zusätzlich zu den Vitest-Tests prüfen.
+
+1. Backend starten: `npm run dev`.
+2. In Bruno den Ordner `bruno` als Sammlung öffnen.
+3. Rechts oben die Umgebung `local` wählen. Ohne sie schlägt jede Anfrage fehl.
+4. Einen Eintrag senden oder die ganze Sammlung mit "Run" ausführen.
+
+Alle Variablen wie `baseUrl`, `token` und `userId` stehen nur in der Umgebung `local` (`bruno/environments/local.bru`).  
+Wie man sie benutzt und ändert, steht im [README der Sammlung](bruno/README.md#variablen).
+
 ## Visual Studio Code
 
 Am einfachsten öffnet man `oop-project1-timetracking.code-workspace` über Datei → "Arbeitsbereich aus Datei öffnen".  

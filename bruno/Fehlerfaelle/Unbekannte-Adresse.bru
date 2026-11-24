@@ -1,0 +1,21 @@
+meta {
+  name: Unbekannte Adresse
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/unbekannt
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 404
+}
+
+tests {
+  test("nennt die unbekannte Adresse auf Deutsch", function () {
+    expect(res.getBody().error.message).to.equal("Die Adresse GET /api/unbekannt gibt es nicht.");
+  });
+}

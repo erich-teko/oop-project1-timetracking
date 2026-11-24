@@ -1,0 +1,27 @@
+meta {
+  name: Health
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api/health
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body.status: eq ok
+}
+
+tests {
+  test("liefert die aktuelle Serverzeit im ISO-Format", function () {
+    const time = res.getBody().time;
+    expect(new Date(time).toISOString()).to.equal(time);
+  });
+}
+
+docs {
+  `GET /api/health` zeigt, ob das Backend läuft, und liefert die Zeit der Clock.
+}
