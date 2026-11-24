@@ -13,7 +13,9 @@ npm start
 ```
 
 Das Backend läuft danach auf <http://localhost:3000>.  
-Ob es läuft, zeigt <http://localhost:3000/api/health>.
+Diese Adresse leitet auf die Infoseite <http://localhost:3000/api> weiter.  
+Sie nennt Name, Version und die verfügbaren Adressen der API.  
+Ob das Backend läuft, zeigt <http://localhost:3000/api/health>.
 
 Für die Entwicklung startet `npm run dev` das Backend neu, sobald sich eine Datei ändert.
 
