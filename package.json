@@ -12,6 +12,8 @@
     "backend"
   ],
   "scripts": {
-    "start": "npm start --workspace backend"
+    "start": "npm start --workspace backend",
+    "test": "npm test --workspaces --if-present",
+    "coverage": "npm run coverage --workspaces --if-present"
   }
 }

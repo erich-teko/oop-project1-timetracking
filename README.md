@@ -18,6 +18,18 @@ Ob es läuft, zeigt <http://localhost:3000/api/health>.
 Den Port ändert die Umgebungsvariable `PORT`.  
 Dafür `backend/.env.example` nach `backend/.env` kopieren und anpassen.
 
+## Tests
+
+```bash
+npm test
+npm run coverage
+```
+
+`npm test` führt alle Tests aus. Sie brauchen keine Datenbank.  
+`npm run coverage` zeigt zusätzlich die Abdeckung pro Ordner, also auch für `src/domain`.  
+Liegt die Domänenschicht unter 70 % Zeilenabdeckung, schlägt der Befehl fehl (NFR-11).  
+Den ausführlichen Bericht öffnet `backend/coverage/index.html` im Browser.
+
 ## Aufbau
 
 Das Repository ist ein npm-Workspace.  
