@@ -1,0 +1,37 @@
+# Prüft jeden Pull Request auf main mit Lint und Tests (NFR-11, NFR-13).
+# Schlägt ein Schritt fehl, zeigt GitHub den Pull Request rot an.
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-lint:
+    name: Tests und Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code auschecken
+        uses: actions/checkout@v7
+
+      - name: Node.js 24 einrichten
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Abhängigkeiten installieren
+        run: npm ci
+
+      - name: Lint (NFR-13)
+        run: npm run lint
+
+      # Führt alle Tests aus und prüft die Abdeckung der Domäne (NFR-11).
+      - name: Tests mit Abdeckung
+        run: npm run coverage

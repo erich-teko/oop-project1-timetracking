@@ -39,6 +39,12 @@ npm run lint
 ESLint prüft das ganze Repository und muss 0 Fehler melden (NFR-13).  
 Vor jedem Commit müssen `npm test` und `npm run lint` fehlerfrei laufen.
 
+## Automatische Prüfung
+
+Bei jedem Pull Request auf `main` laufen Lint und Tests mit Abdeckung in GitHub Actions.  
+Der Workflow steht in [`.github/workflows/ci.yml`](.github/workflows/ci.yml).  
+Ein roter Lauf zeigt den Pull Request als fehlgeschlagen an.
+
 ## Aufbau
 
 Das Repository ist ein npm-Workspace.  
