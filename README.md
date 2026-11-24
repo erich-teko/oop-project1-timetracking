@@ -30,6 +30,15 @@ npm run coverage
 Liegt die Domänenschicht unter 70 % Zeilenabdeckung, schlägt der Befehl fehl (NFR-11).  
 Den ausführlichen Bericht öffnet `backend/coverage/index.html` im Browser.
 
+## Codequalität
+
+```bash
+npm run lint
+```
+
+ESLint prüft das ganze Repository und muss 0 Fehler melden (NFR-13).  
+Vor jedem Commit müssen `npm test` und `npm run lint` fehlerfrei laufen.
+
 ## Aufbau
 
 Das Repository ist ein npm-Workspace.  
