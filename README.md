@@ -1,6 +1,39 @@
 # oop-project1-timetracking
 TEKO OOP Projektarbeit 1 (JS)
 
+## Voraussetzungen
+
+- Node.js 24 und npm
+
+## Installation und Start
+
+```bash
+npm install
+npm start
+```
+
+Das Backend läuft danach auf <http://localhost:3000>.  
+Ob es läuft, zeigt <http://localhost:3000/api/health>.
+
+Den Port ändert die Umgebungsvariable `PORT`.  
+Dafür `backend/.env.example` nach `backend/.env` kopieren und anpassen.
+
+## Aufbau
+
+Das Repository ist ein npm-Workspace.  
+Alle Befehle laufen im Hauptverzeichnis.
+
+| Ordner | Inhalt |
+|---|---|
+| `backend/src/api` | REST-API mit Express: Routen und Middleware |
+| `backend/src/services` | Anwendungsfälle, laden und speichern über Repositories |
+| `backend/src/domain` | Domänenklassen mit den Fachregeln, ohne Express und Prisma |
+| `backend/src/repositories` | Datenzugriff, der einzige Ort mit Prisma (NFR-12) |
+| `backend/src/app.js` | Composition Root: erzeugt und verbindet alle Objekte |
+| `backend/src/server.js` | Startet den Server |
+
+Die Regeln zur Architektur stehen in [`AGENTS.md`](AGENTS.md), Kapitel 3.
+
 ## Dokumentation
 
 Die Projektdokumentation liegt im Ordner [`docs`](docs/README.md).
