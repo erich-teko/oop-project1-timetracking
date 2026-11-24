@@ -15,6 +15,8 @@ npm start
 Das Backend läuft danach auf <http://localhost:3000>.  
 Ob es läuft, zeigt <http://localhost:3000/api/health>.
 
+Für die Entwicklung startet `npm run dev` das Backend neu, sobald sich eine Datei ändert.
+
 Den Port ändert die Umgebungsvariable `PORT`.  
 Dafür `backend/.env.example` nach `backend/.env` kopieren und anpassen.
 
@@ -44,6 +46,46 @@ Vor jedem Commit müssen `npm test` und `npm run lint` fehlerfrei laufen.
 Bei jedem Pull Request auf `main` laufen Lint und Tests mit Abdeckung in GitHub Actions.  
 Der Workflow steht in [`.github/workflows/ci.yml`](.github/workflows/ci.yml).  
 Ein roter Lauf zeigt den Pull Request als fehlgeschlagen an.
+
+## Visual Studio Code
+
+Am einfachsten öffnet man `oop-project1-timetracking.code-workspace` über Datei → "Arbeitsbereich aus Datei öffnen".  
+Wer nur den Ordner öffnet, erhält keine Empfehlungen und keine Konfigurationen.
+
+### Erweiterungen installieren
+
+VS Code schlägt die Erweiterungen nur vor, es installiert sie nicht.  
+Ohne die Erweiterung Vitest fehlen die Testansicht und die Buttons zum Starten einzelner Tests.
+
+```bash
+code --install-extension dbaeumer.vscode-eslint
+```
+
+```bash
+code --install-extension vitest.explorer
+```
+
+Danach VS Code neu laden: Ctrl+Shift+P, dann "Developer: Reload Window".
+
+| Erweiterung | Nutzen |
+|---|---|
+| ESLint (`dbaeumer.vscode-eslint`) | Zeigt Lint-Fehler direkt im Code und korrigiert beim Speichern |
+| Vitest (`vitest.explorer`) | Testansicht mit dem Reagenzglas-Symbol links, Buttons ▶ neben jedem `describe` und `it` |
+
+Erscheinen die Tests nicht, hilft die Ausgabe unter Ansicht → Ausgabe → "Vitest".
+
+### Starten und Debuggen
+
+In der Ansicht "Ausführen und Debuggen" stehen diese Konfigurationen bereit:
+
+| Konfiguration | Zweck |
+|---|---|
+| Backend starten (npm run dev) | Startet das Backend mit Neustart bei Änderungen |
+| Tests: alle (Vitest) | Führt alle Tests im Debugger aus |
+| Tests: aktuelle Datei (Vitest) | Führt die offene Testdatei im Debugger aus |
+| Tests: Abdeckung (Vitest) | Erzeugt den Abdeckungsbericht |
+
+Haltepunkte greifen in allen Konfigurationen.
 
 ## Aufbau
 

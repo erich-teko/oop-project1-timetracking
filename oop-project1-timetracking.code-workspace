@@ -4,5 +4,68 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		// ESLint prüft beim Speichern und korrigiert, was es automatisch kann (NFR-13).
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": "explicit"
+		},
+		"eslint.workingDirectories": [
+			{
+				"mode": "auto"
+			}
+		]
+	},
+	"extensions": {
+		"recommendations": [
+			"dbaeumer.vscode-eslint",
+			"vitest.explorer"
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				// Startet das Backend und startet es bei jeder Änderung neu.
+				"name": "Backend starten (npm run dev)",
+				"type": "node",
+				"request": "launch",
+				"cwd": "${workspaceFolder}/backend",
+				"runtimeExecutable": "npm",
+				"runtimeArgs": ["run", "dev"],
+				"console": "integratedTerminal",
+				"skipFiles": ["<node_internals>/**"]
+			},
+			{
+				"name": "Tests: alle (Vitest)",
+				"type": "node",
+				"request": "launch",
+				"cwd": "${workspaceFolder}/backend",
+				"program": "${workspaceFolder}/node_modules/vitest/vitest.mjs",
+				"args": ["run"],
+				"console": "integratedTerminal",
+				"skipFiles": ["<node_internals>/**"]
+			},
+			{
+				// Die offene Testdatei im Debugger. Haltepunkte greifen in Test und Code.
+				"name": "Tests: aktuelle Datei (Vitest)",
+				"type": "node",
+				"request": "launch",
+				"cwd": "${workspaceFolder}/backend",
+				"program": "${workspaceFolder}/node_modules/vitest/vitest.mjs",
+				"args": ["run", "${file}"],
+				"console": "integratedTerminal",
+				"skipFiles": ["<node_internals>/**"]
+			},
+			{
+				"name": "Tests: Abdeckung (Vitest)",
+				"type": "node",
+				"request": "launch",
+				"cwd": "${workspaceFolder}/backend",
+				"program": "${workspaceFolder}/node_modules/vitest/vitest.mjs",
+				"args": ["run", "--coverage"],
+				"console": "integratedTerminal",
+				"skipFiles": ["<node_internals>/**"]
+			}
+		]
+	}
 }

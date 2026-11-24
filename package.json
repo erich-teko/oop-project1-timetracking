@@ -15,7 +15,8 @@
     "start": "npm start --workspace backend",
     "test": "npm test --workspaces --if-present",
     "coverage": "npm run coverage --workspaces --if-present",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "dev": "npm run dev --workspace backend"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
