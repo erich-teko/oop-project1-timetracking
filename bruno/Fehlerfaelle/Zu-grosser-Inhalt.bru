@@ -1,0 +1,35 @@
+meta {
+  name: Zu grosser Inhalt
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/health
+  body: json
+  auth: none
+}
+
+body:json {
+  {}
+}
+
+script:pre-request {
+  // Express nimmt höchstens 100 kB JSON an. 200 000 Zeichen liegen sicher darüber.
+  req.setBody({ text: "x".repeat(200000) });
+}
+
+assert {
+  res.status: eq 400
+}
+
+tests {
+  test("meldet den zu grossen Inhalt auf Deutsch", function () {
+    expect(res.getBody().error.message).to.equal("Der Inhalt der Anfrage ist zu gross.");
+  });
+}
+
+docs {
+  Ein Inhalt über 100 kB ergibt HTTP 400 (NFR-02).
+  Das Skript erzeugt den grossen Inhalt erst beim Senden.
+}

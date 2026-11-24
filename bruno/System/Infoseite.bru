@@ -1,0 +1,28 @@
+meta {
+  name: Infoseite
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+tests {
+  test("nennt Name, Version und die verfügbaren Adressen", function () {
+    const body = res.getBody();
+    expect(body.name).to.be.a("string");
+    expect(body.version).to.match(/^\d+\.\d+\.\d+$/);
+    expect(body.endpoints).to.include({ info: "/api", health: "/api/health" });
+  });
+}
+
+docs {
+  `GET /api` nennt Name, Version und die verfügbaren Adressen der API.
+}

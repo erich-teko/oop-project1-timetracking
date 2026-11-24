@@ -1,0 +1,26 @@
+meta {
+  name: Weiterleitung von /
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+tests {
+  test("führt über die Weiterleitung zur Infoseite", function () {
+    expect(res.getBody()).to.have.property("endpoints");
+  });
+}
+
+docs {
+  `GET /` leitet mit HTTP 302 auf `/api` weiter.
+  Bruno folgt der Weiterleitung und zeigt die Infoseite.
+}

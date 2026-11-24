@@ -1,0 +1,33 @@
+meta {
+  name: Unlesbarer Inhalt
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/api/health
+  body: text
+  auth: none
+}
+
+headers {
+  Content-Type: application/json; charset=latin9
+}
+
+body:text {
+  {}
+}
+
+assert {
+  res.status: eq 400
+}
+
+tests {
+  test("meldet den unlesbaren Inhalt auf Deutsch", function () {
+    expect(res.getBody().error.message).to.equal("Der Inhalt der Anfrage kann nicht gelesen werden.");
+  });
+}
+
+docs {
+  Einen unbekannten Zeichensatz kann Express nicht lesen. Das ergibt HTTP 400 (NFR-02).
+}

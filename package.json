@@ -1,0 +1,26 @@
+{
+  "name": "oop-project1-timetracking",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Auftragszeiterfassung für Freelancer, TEKO Luzern, Gruppe 2",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "workspaces": [
+    "backend"
+  ],
+  "scripts": {
+    "start": "npm start --workspace backend",
+    "test": "npm test --workspaces --if-present",
+    "coverage": "npm run coverage --workspaces --if-present",
+    "lint": "eslint .",
+    "dev": "npm run dev --workspace backend"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "eslint": "10.15.0",
+    "globals": "17.14.0"
+  }
+}
